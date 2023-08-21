@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { IUser } from '../config/interface'
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -16,7 +17,6 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     require: [true, "Please add your password"],
-    trim: true
   },
   avatar: {
     type: String,
@@ -28,10 +28,10 @@ const userSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    default: 'normal'
+    default: 'register'
   }
 }, {
   timestamps: true
 }) 
 
-export default mongoose.model('User', userSchema)
+export default mongoose.model<IUser>('User', userSchema)
